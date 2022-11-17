@@ -1,7 +1,7 @@
 const express = require("express");
 const passport = require('passport')
 const GoogleStrategy = require('passport-google-oidc')
-const db = require('../db')
+//const db = require('../db')
 //const session = require('express-session')
 const router = express.Router();
 const authController = require("../controllers/auth");
@@ -10,7 +10,7 @@ const postsController = require("../controllers/posts");
 const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
 //Google Auth
-passport.use(new GoogleStrategy({
+/* passport.use(new GoogleStrategy({
     clientID: process.env['GOOGLE_CLIENT_ID'],
     clientSecret: process.env['GOOGLE_CLIENT_SECRET'],
     callbackURL: '/oauth2/redirect/google',
@@ -50,7 +50,7 @@ passport.use(new GoogleStrategy({
       }
     });
   }));
-
+ */
 
 
 //Main Routes - simplified for now

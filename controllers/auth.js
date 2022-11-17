@@ -1,5 +1,5 @@
 const passport = require("passport");
-const GoogleStrategy = require('passport-google-oidc')
+//const GoogleStrategy = require('passport-google-oidc')
 const validator = require("validator");
 const User = require("../models/User");
 

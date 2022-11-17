@@ -1,12 +1,21 @@
 <%- include('partials/header') -%>
   <div class="container">
+    <div class="col-6 mt-5 nav">
+      <a class="btn btn-primary" href="/profile">Return to Profile</a> | 
+      <a class="btn btn-primary" href="/feed">Return to Feed</a>
+    </div>
     <div class="row justify-content-center mt-5">
-      <ul class="row list-unstyled">
-        <% for(var i=0; i<posts.length; i++) {%>
-          <li class="col-6 justify-content-between mt-5">
+      <ul class="feed">
+        <% for(var i = 0; i < posts.length; i++) {%>
+          <li class="feed-posts">
             <a href="/post/<%= posts[i]._id%>">
               <img class="img-fluid" src="<%= posts[i].image%>">
             </a>
+            <div>
+              <h1><%= posts[i].title%></h1>
+              <h1 class="btn btn-primary fa fa-heart" > <%= posts[i].likes %></h1>
+            </div>
+            
           </li>
         <% } %>
         </ul>
