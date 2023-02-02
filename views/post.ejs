@@ -3,10 +3,10 @@
   <div class="row justify-content-center mt-5">
     <div class="col-6">
       <div class="col-6 mt-5 nav">
-        <a class="btn btn-primary" href="/profile">Return to Profile</a> | 
+        <!-- <a class="btn btn-primary" href="/profile">Return to Profile</a> |  -->
         <a class="btn btn-primary" href="/feed">Return to Feed</a>
       </div>
-      <h2><%= post.title %></h2>
+      <h2><%= post.brand %>'s <%= post.title %></h2>
       <h3>By: <%= post.user.userName %></h3>
       <div class="img-container">
         <img class="img-fluid" src="<%= post.image%>" />
@@ -36,7 +36,7 @@
       </div>
     </div>
     <div class="col-3 mt-5 review">
-      <h4>Bottle Inspection</h4>
+<!--       <h4>Bottle Inspection</h4>
       <p><%= post.bottleInspection %></p>
       <h4>Pourability</h4>
       <p><%= post.pourability %></p>
@@ -49,7 +49,14 @@
       <h4>Final Thoughts</h4>
       <p><%= post.thoughts %></p>
       <h4>Where to Purchase</h4>
-      <p><%= post.purchase %></p>
+      <p><%= post.purchase %></p> -->
+      <!-- <h4><%= post.brand %>'s <%= post.title %></h4> -->
+
+      <h4>Heat Rating: <progress max="10" value="<%= post.heat %>"></progress></h4>
+      <h4>Review</h4>
+      <p><%= post.thoughts %></p>
+      <h4>Overall Rating</h4>
+      <p><%= post.rating %>/10</p>
 
     </div>
 <!-- Add A Comment Box -->

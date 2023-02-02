@@ -5,6 +5,10 @@ const PostSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  brand: {
+    type: String,
+    required: true,
+  },
   image: {
     type: String,
     require: true,
@@ -19,19 +23,19 @@ const PostSchema = new mongoose.Schema({
   }, */
   bottleInspection: {
     type: String,
-    required: true,
+    required: false,
   },
   pourability: {
     type: String,
-    required: true,
+    required: false,
   },
   smell: {
     type: String,
-    required: true,
+    required: false,
   },
   taste: {
     type: String,
-    required: true,
+    required: false,
   },
   heat: {
     type: String,
@@ -41,9 +45,13 @@ const PostSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  purchase: {
+  rating: {
     type: String,
     required: true,
+  },
+  purchase: {
+    type: String,
+    required: false,
   },
   likes: {
     type: Number,

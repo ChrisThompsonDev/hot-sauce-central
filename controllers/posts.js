@@ -3,18 +3,18 @@ const Post = require("../models/Post");
 const Comment = require("../models/Comments");
 
 module.exports = {
-  getProfile: async (req, res) => {
+  getWriteReview: async (req, res) => {
     try {
       const posts = await Post.find({ user: req.user.id });
-      res.render("profile.ejs", { posts: posts, user: req.user });
+      res.render("writeReview.ejs", { posts: posts, user: req.user });
     } catch (err) {
       console.log(err);
     }
   },
   getFeed: async (req, res) => {
     try {
-      const posts = await Post.find().sort({ createdAt: "desc" }).lean();
-      res.render("feed.ejs", { posts: posts });
+      const posts = await Post.find({post: req.params.id}).sort({ likes: "desc" }).populate('user').lean();
+      res.render("feed.ejs", { posts: posts, user: req.user });
     } catch (err) {
       console.log(err);
     }
@@ -35,21 +35,23 @@ module.exports = {
 
       await Post.create({
         title: req.body.title,
+        brand: req.body.brand,
         image: result.secure_url,
         cloudinaryId: result.public_id,
         //caption: req.body.caption,
-        bottleInspection: req.body.bottleInspection,
+/*         bottleInspection: req.body.bottleInspection,
         pourability: req.body.pourability,
         smell: req.body.smell,
-        taste: req.body.taste,
+        taste: req.body.taste, */
         heat: req.body.heat,
         thoughts: req.body.thoughts,
-        purchase: req.body.purchase,
+        rating: req.body.rating,
+        /* purchase: req.body.purchase, */
         likes: 0,
         user: req.user.id,
       });
       console.log("Post has been added!");
-      res.redirect("/profile");
+      res.redirect("/feed");
     } catch (err) {
       console.log(err);
     }
@@ -77,9 +79,9 @@ module.exports = {
       // Delete post from db
       await Post.remove({ _id: req.params.id });
       console.log("Deleted Post");
-      res.redirect("/profile");
+      res.redirect("/feed");
     } catch (err) {
-      res.redirect("/profile");
+      res.redirect("/feed");
     }
   },
 };

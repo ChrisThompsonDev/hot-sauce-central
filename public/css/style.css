@@ -50,7 +50,8 @@ h3 {
 }
 
 .col-6 .img-fluid {
-    width: 100%;
+    /* width: 100%; */
+    height: auto;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -167,39 +168,55 @@ h3 {
 }
 
 /* *************** FEED ******************* */
+#logo {
+    display: flex;
+    justify-content: center;
+}
+#logo a {
+    display: flex;
+    justify-content: center;
+}
+#logo a img {
+    width: 50%;
+}
 .feed {
     width: 90%;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    flex-wrap: nowrap;
+    justify-content: space-between;
     margin: 2rem auto;
+    height: auto;
 }
 
 .feed-posts {
     /* display: block; */
-    width: 45%;
+    width: 20%;
     height: auto;
     /* overflow: auto; */
-    margin: 2rem auto;
+    /* margin: 2rem auto; */
     border: 1px solid black;
     border-radius: 25px;
     background-color: rgba(214, 210, 210, 0.7);
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    padding: 2rem;
+    padding: .5rem;
 }
 .feed-posts a {
     width: 100%;
     height: 50%;
-    margin: 2rem auto;
+    margin: .5rem auto;
     border-radius: 25px;
     display: flex;
 }
-.feed-posts a img {
+.feedImgContainer {
     width: 100%;
-    max-height: 100%;
-    margin: 2rem auto;
+    height: 80%;
+}
+.feed-posts a img {
+    max-width:100%;
+    max-height:100%;
+    margin: 0 auto;
     border-radius: 25px;
 }
 .feed-posts h1 {
@@ -207,6 +224,70 @@ h3 {
     width: 100%;
     /* padding-left: 2rem; */
 }
+
+.reviewList {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding: 0;
+    border-bottom: 1px solid black;
+    margin: 0;
+}
+.reviewList li {
+    width: 14%;
+    border-left: 1px solid black;
+    padding: 0 1rem;
+    font-size: 2rem;
+    text-align: center;
+    word-wrap: break-word;
+}
+.reviewList li a {
+    font-size: 1.2rem;
+}
+/* progress {
+    color: red;
+    width: 90%;
+} */
+#reviewListTopBar {
+    background-color: rgb(209, 207, 207);
+    border-top: 1px solid black;
+}
+#reviewListSection {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+/* *************** Heat Bar ************ */
+.heatBar {
+    height: 20px;
+    background-color: #f5f5f5;
+  }
+  .heatBar::before {
+    /* counter-reset: progress var(--percent); */
+    /* content: counter(progress) '%\2002'; */
+    content: '';
+    display: flex;
+    justify-content: end;
+    width: calc(var(--percent) * 1%);
+    height: 100%;
+    background: #2486ff;
+    white-space: nowrap;
+
+    background-image:
+        linear-gradient(red, red),
+        linear-gradient(orange, orange),
+        linear-gradient(yellow, yellow),
+        linear-gradient(green, green);
+
+    background-size: calc((var(--percent) - 80) * 100%) 100%,
+        calc((var(--percent) - 60) * 100%) 100%,
+        calc((var(--percent) - 40) * 100%) 100%,
+        calc((var(--percent) - 00) * 100%) 100%,
+        100% 100%;
+  }
 
 /* *************** FOOTER *************** */
 

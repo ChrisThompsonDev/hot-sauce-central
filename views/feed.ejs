@@ -1,24 +1,53 @@
 <%- include('partials/header') -%>
   <div class="container">
     <div class="col-6 mt-5 nav">
-      <a class="btn btn-primary" href="/profile">Return to Profile</a> | 
-      <a class="btn btn-primary" href="/feed">Return to Feed</a>
+      <a class="btn btn-primary" href="/writeReview">Write a Review</a> | 
+      <!-- <a class="btn btn-primary" href="/feed">Return to Feed</a> -->
     </div>
-    <div class="row justify-content-center mt-5">
-      <ul class="feed">
-        <% for(var i = 0; i < posts.length; i++) {%>
-          <li class="feed-posts">
-            <a href="/post/<%= posts[i]._id%>">
-              <img class="img-fluid" src="<%= posts[i].image%>">
-            </a>
-            <div>
-              <h1><%= posts[i].title%></h1>
-              <h1 class="btn btn-primary fa fa-heart" > <%= posts[i].likes %></h1>
-            </div>
-            
-          </li>
-        <% } %>
+    <main>
+      <h1 id="logo"><a href="/feed"><img src="/imgs/logo.png" alt="logo"></a></h1>
+      <h2>Top Reviews</h2>
+      <div class="row justify-content-center mt-5">
+        <ul class="feed">
+          <% for(var i = 0; i < posts.length; i++) {%>
+            <li class="feed-posts">
+              <a href="/post/<%= posts[i]._id%>" class="feedImgContainer">
+                <img class="img-fluid" src="<%= posts[i].image%>">
+              </a>
+              <div>
+                <a><%= posts[i].brand %>'s <%= posts[i].title %></a>
+                <span class="btn btn-primary fa fa-heart" > <%= posts[i].likes %></span>
+                <!-- <span class="btn btn-primary fa fa-heart" > <%= posts[i].comments %></span> -->
+              </div>
+            </li>
+          <% } %>
+          </ul>
+      </div>
+    </main>
+
+    <main id="reviewListSection">
+        <ul id="reviewListTopBar" class="reviewList">
+          <li>Brand</li>
+          <li>Name</li>
+          <li>Rating</li>
+          <li>Heat</li>
+          <li>Likes</li>
+          <li>User</li>
+          <li>Date</li>
         </ul>
-    </div>
+        <% for(var i = 0; i < posts.length; i++) {%>
+        <ul class="reviewList">
+            <li><a><%= posts[i].brand %></a></li>
+            <li><a href="/post/<%= posts[i]._id%>"><%= posts[i].title %></a></li>
+            <li><a><%= posts[i].rating %> / 10</a></li>
+            <!-- <li><a><progress max="10" value="<%= posts[i].heat %>"></progress></a></li> -->
+            <li><a><div class="heatBar" style="--percent:<%= posts[i].heat * 10 %>"></div></a></li>
+            <li><a><%= posts[i].likes %></a></li>
+            <li><a><%= posts[i].user.userName %></a></li>
+            <li><a><%= (posts[i].createdAt).toLocaleDateString('en-US') %></a></li>
+          </ul>
+          <% } %>
+    </main>
+    
   </div>  
 <%- include('partials/footer') -%>
