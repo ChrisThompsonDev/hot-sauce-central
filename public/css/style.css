@@ -9,18 +9,16 @@ body {
 
 /* *************** HEADER *************** */
 header {
-    text-align: center;
-    font-size: 5rem;
-}
-header h1 {
-    margin-bottom: 0;
+    display: flex;
+    justify-content: flex-start;
 }
 
 header, main, .container {
     background-color: rgba(236, 236, 236, 0.7);
 }
-.container {
-    padding-bottom: 5rem;
+
+#logo a img {
+    width: 50%;
 }
 
 /* *************** MAIN SECTION *************** */
@@ -167,23 +165,37 @@ h3 {
     margin-top: 5rem;
 }
 
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+main {
+    padding: 0 2.5rem;
+    width: 80%;
+}
+
+/* *************** Sidebar ******************* */
+.sidebar {
+    width: 20%;
+    height: 100vh;
+    background: rgb(148, 148, 148);
+}
+
 /* *************** FEED ******************* */
-#logo {
-    display: flex;
-    justify-content: center;
+
+
+h2 {
+
+    text-align: center;
+
 }
-#logo a {
-    display: flex;
-    justify-content: center;
-}
-#logo a img {
-    width: 50%;
-}
+
 .feed {
     width: 90%;
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
+    padding-left: 0%;
     margin: 2rem auto;
     height: auto;
 }
@@ -191,7 +203,7 @@ h3 {
 .feed-posts {
     /* display: block; */
     width: 20%;
-    height: auto;
+    height: 25rem;
     /* overflow: auto; */
     /* margin: 2rem auto; */
     border: 1px solid black;
@@ -201,6 +213,7 @@ h3 {
     flex-direction: column;
     flex-wrap: wrap;
     padding: .5rem;
+    align-items: center;
 }
 .feed-posts a {
     width: 100%;
@@ -210,22 +223,44 @@ h3 {
     display: flex;
 }
 .feedImgContainer {
-    width: 100%;
-    height: 80%;
+/*     width: 100%;
+    height: 80%; */
 }
 .feed-posts a img {
     max-width:100%;
     max-height:100%;
     margin: 0 auto;
     border-radius: 25px;
+    object-fit: cover;
 }
+
+.feed-posts div {
+    height: 35%;
+    text-align: center;
+}
+
+.topName {
+    font-size: 1.8rem;
+    /* text-align: center; */
+}
+
+.topName + span {
+    font-size: 1.8rem;
+    margin-top: 1rem;
+    /* text-align: center; */
+}
+
 .feed-posts h1 {
     font-size: 4rem;
     width: 100%;
     /* padding-left: 2rem; */
 }
 
+
+/* *************************** */
+
 .reviewList {
+    width: 100%;
     list-style: none;
     display: flex;
     flex-direction: row;
@@ -233,6 +268,7 @@ h3 {
     justify-content: space-between;
     padding: 0;
     border-bottom: 1px solid black;
+    border-right: 1px solid black;
     margin: 0;
 }
 .reviewList li {
@@ -262,6 +298,7 @@ h3 {
 
 /* *************** Heat Bar ************ */
 .heatBar {
+    margin-top: 2px;
     height: 20px;
     background-color: #f5f5f5;
   }
